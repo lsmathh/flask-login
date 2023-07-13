@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        <div>
+            <input type="text" name="username"
+               placeholder="Username" class="form-control"
+               value="{{ request.form['username'] }}"></input>
+               <input type="text" name="passwd"
+               placeholder="Password" class="form-control"
+               value="{{ request.form['passwd'] }}"></input>
+               <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    <div>
+        <a href="{{ url_for('register')}}">Don't have account? Register here!</a>
+    </div>
+{% endblock %}
