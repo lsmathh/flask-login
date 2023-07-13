@@ -44,7 +44,12 @@ def login():
         user = conn.execute('SELECT * FROM user WHERE username = ? AND passwd = ?',
                         (username, passwd))
         
-        if not user.fetchone():
+        if not username:
+            flash('Username is required!')
+        elif not passwd:
+            flash('Password is required!')
+        elif not user.fetchone():
+            flash('Username or password wrong, try again')
             return redirect(url_for('login'))
         else:
             session['name'] = request.form.get("username")
